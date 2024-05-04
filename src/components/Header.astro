@@ -1,1 +1,7 @@
-<h1 class="text-blue">test</h1>
+---
+import { Image } from 'astro:assets';
+import logo from './idox_cube.png'; // logo === '/src/idox_cube.png';
+---
+
+<Image src={logo} alt="Idox cube" width="50" height="50" />
+<h1 class="text-blue-500">Directory</h1>
