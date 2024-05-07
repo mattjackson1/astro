@@ -1,10 +1,17 @@
 ---
 import { Image } from 'astro:assets';
-import logo from './idox_cube.png'; // logo === '/src/idox_cube.png';
+import logo from './idox_logo_white.png'; // logo === '/src/idox_logo_white.png';
 const { product } = Astro.props;
 ---
 
-<div class="flex items-center gap-3 ml-4 my-2">
-    <Image src={logo} alt="Idox cube" width="50" height="50" loading="eager" />
-    <span class="text-blue-500 font-semibold">{product}</span>
-</div>
+<nav id="nav" class="bg-cobalt text-white sticky top-0 w-full z-50">
+    <div class="mx-auto max-w-none px-4 xl:px-6">
+        <div class="relative flex flex-row h-16 justify-between">
+            <div id="head" class="flex flex-shrink-0 items-center max-xl:ml-8">
+                <Image src={logo} alt="Idox plc" width="37" height="28" loading="eager" />
+                <div class="block w-[1px] h-[35px] bg-white opacity-40 mx-4"></div>
+                <span class="text-white tracking-tight">{product}</span>
+            </div>
+        </div>
+    </div>
+</nav>
