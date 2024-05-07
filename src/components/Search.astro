@@ -1,6 +1,7 @@
 ---
 
 import Button from '../components/Button.astro';
+import searchIcon from '../assets/search-icon.svg?raw';
 
 ---
 <form id="searchFilterForm" name="searchFilterForm" method="post" action="/ds9/admin/browserecords.seam" enctype="application/x-www-form-urlencoded" class="w-full lg:mx-auto lg:w-2/3 flex justify-between">
@@ -27,19 +28,22 @@ import Button from '../components/Button.astro';
                 <input id="searchFilterForm:recordFilter_0" type="text" name="searchFilterForm:recordFilter_0" class="px-3 py-2 border rounded enabled:hover:border-gray-400 disabled:opacity-75" placeholder="Enter words to search for:">
             </div>    
             <p class="recordFilterButtons">
-                <Button text="Search" />
+                <Button>
+                    <span set:html={searchIcon} />
+                    Search
+                </Button>                
                 <input type="submit" name="searchFilterForm:j_id59" value="Reset" class="border rounded px-3 py-2">
             </p>
             <strong>Showing 329 records</strong>
         </div>
 
-        <Button text="new clause" />
+        <Button>new clause</Button>
     </div>    
     
     <ul class="flex flex-col gap-2">
         <li><a href="#" id="searchFilterForm:j_id65" class="">Switch to syntax</a></li>
         <li><a href="#" id="searchFilterForm:gotolink" class="">Jump to record</a></li>
-        <li><Button text="Export to csv" /></li>
+        <li><Button>Export to csv</Button></li>
     </ul>        
         
 </form>
