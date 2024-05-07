@@ -1,0 +1,46 @@
+---
+
+import Button from '../components/Button.astro';
+
+---
+<form id="searchFilterForm" name="searchFilterForm" method="post" action="/ds9/admin/browserecords.seam" enctype="application/x-www-form-urlencoded" class="flex justify-between">
+    <div id="searchWizard" class="flex flex-col gap-3">
+        <div class="flex items-center gap-3">
+            <select name="searchFilterForm:j_id39" class="px-3 py-2 border rounded enabled:hover:border-gray-400 disabled:opacity-75" size="1">
+                <option value="org.jboss.seam.ui.NoSelectionConverter.noSelectionValue" selected="selected">Search all...</option>
+                <option value="field:resource_type">Page type</option>
+                <option value="field:title">Page title</option>
+                <option value="field:familychannel">Search categories (Family)</option>
+                <option value="field:searchable">Is this page searchable?</option>
+                <option value="field:lo_age_bands">Local Offer age band</option>
+                <option value="field:publication_date">Publication date</option>
+                <option value="field:escbchannel">Search categories (ESCB)</option>
+                <option value="field:localofferchannel">Search categories (Local Offer)</option>
+                <option value="field:youthchannel">Search categories (Youth)</option>
+                <option value="field:sharingportal_inbound">Syndicated from Portal</option>
+                <option value="field:sharingportal_inbound_owner">Syndicated by</option>
+                <option value="field:localofferchannelnew">Search categories (Local Offer new)</option>
+                <option value="entrySource">Entry Source</option>
+            </select>
+            <div id="searchFilterForm:clausebuilder0">
+                <label for="searchFilterForm:recordFilter_0" class="sr-only">Enter words to search for.</label>
+                <input id="searchFilterForm:recordFilter_0" type="text" name="searchFilterForm:recordFilter_0" class="px-3 py-2 border rounded enabled:hover:border-gray-400 disabled:opacity-75" placeholder="Enter words to search for:">
+            </div>    
+            <p class="recordFilterButtons">
+                <Button text="Search" />
+                <input type="submit" name="searchFilterForm:j_id59" value="Reset" class="border rounded px-3 py-2">
+            </p>
+            <strong>Showing 329 records</strong>
+        </div>
+
+        <Button text="new clause" />
+    </div>    
+    
+    <ul class="flex flex-col gap-2">
+        <li><a href="#" id="searchFilterForm:j_id65" class="">Switch to syntax</a></li>
+        <li><a href="#" id="searchFilterForm:gotolink" class="">Jump to record</a></li>
+        <li><Button text="Export to csv" /></li>
+    </ul>        
+        
+</form>
+    
