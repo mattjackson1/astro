@@ -1,32 +1,23 @@
-USE HEADLESS UI HERE...
 <nav class="flex flex-1 flex-col">
-    <ul role="list" class="flex flex-1 flex-col gap-y-7">
+    <ul role="list" class="flex flex-1 flex-col">
         <li>
             <ul role="list" class="-mx-2 space-y-1">
                 <li>
                     <div x-data="{ open: true }">
                         <button type="button" class="flex items-center w-full hover:bg-gray-100 text-left rounded-md p-2 gap-x-3 text-sm leading-6 font-medium text-gray-900" aria-controls="sub-menu-1" @click="open = !open" aria-expanded="true" x-bind:aria-expanded="open.toString()" x-state:on="Current" x-state:off="Default" x-state-description="Current: &quot;bg-gray-50&quot;, Default: &quot;hover:bg-gray-50&quot;">
-                                <svg class="h-5 w-5 shrink-0 rotate-90 text-gray-500" x-state:on="Expanded" x-state:off="Collapsed" :class="{ 'rotate-90 text-gray-500': open, 'text-gray-400': !(open) }" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                    <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"></path>
-                                </svg>
-                                Records
+                            <svg class="h-5 w-5 shrink-0 rotate-90 text-gray-500" x-state:on="Expanded" x-state:off="Collapsed" :class="{ 'rotate-90 text-gray-500': open, 'text-gray-400': !(open) }" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"></path>
+                            </svg>
+                            Records
                         </button>
-                        <ul class="mt-1 px-2 space-y-1">
+                        <ul x-description="Expandable link section, show/hide based on state." class="mt-1 px-2 space-y-1" id="sub-menu-1" x-show="open" style="">
                             <li>
                                 <a href="#" class="hover:bg-gray-100 block rounded-md py-2 pr-2 pl-9 text-sm leading-6 text-gray-700">All (430)</a>
                             </li>
                             <li>
-                                <button type="button" class="bg-blue-50 block rounded-md py-2 pr-2 pl-9 text-sm leading-6 font-semibold flex items-center w-full hover:bg-gray-100 text-left rounded-md p-2 gap-x-3 text-sm leading-6 font-medium text-gray-900" aria-controls="sub-menu-1" @click="open = !open" aria-expanded="true" x-bind:aria-expanded="open.toString()" x-state:on="Current" x-state:off="Default" x-state-description="Current: &quot;bg-gray-50&quot;, Default: &quot;hover:bg-gray-50&quot;">
-                                    <svg class="h-5 w-5 shrink-0 rotate-90 text-gray-500" x-state:on="Expanded" x-state:off="Collapsed" :class="{ 'rotate-90 text-gray-500': open, 'text-gray-400': !(open) }" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                        <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"></path>
-                                    </svg>
+                                <button type="button" class="bg-blue-50 py-2 pr-2 pl-9 flex items-center w-full hover:bg-gray-100 text-left rounded-md p-2 gap-x-3 text-sm leading-6 font-medium text-gray-900" aria-controls="sub-menu-1" @click="open = !open" aria-expanded="true" x-bind:aria-expanded="open.toString()" x-state:on="Current" x-state:off="Default" x-state-description="Current: &quot;bg-gray-50&quot;, Default: &quot;hover:bg-gray-50&quot;">
                                     Live (330)
                                 </button>
-                                <ul class="mt-1 px-2 space-y-1">
-                                    <li><a href="#" class="hover:bg-gray-100 block rounded-md py-2 pr-2 pl-9 text-sm leading-6 text-gray-700">Updates (0)</a></li>
-                                    <li><a href="#" class="hover:bg-gray-100 block rounded-md py-2 pr-2 pl-9 text-sm leading-6 text-gray-700">Drafts (49)</a></li>
-                                    <li><a href="#" class="hover:bg-gray-100 block rounded-md py-2 pr-2 pl-9 text-sm leading-6 text-gray-700">Trash (73)</a></li>
-                                </ul>
                             </li>
                             <li>
                                 <a href="#" class="hover:bg-gray-100 block rounded-md py-2 pr-2 pl-9 text-sm leading-6 text-gray-700">Awaiting (0)</a>
@@ -44,6 +35,40 @@ USE HEADLESS UI HERE...
                     </div>
                 </li>
             </ul>
+        </li>
+        <li>
+            <ul role="list" class="-mx-2 space-y-1">
+                <li>
+                    <div x-data="{ open: false }">
+                        <button type="button" class="flex items-center w-full hover:bg-gray-100 text-left rounded-md p-2 gap-x-3 text-sm leading-6 font-medium text-gray-900" aria-controls="sub-menu-1" @click="open = !open" aria-expanded="true" x-bind:aria-expanded="open.toString()" x-state:on="Current" x-state:off="Default" x-state-description="Current: &quot;bg-gray-50&quot;, Default: &quot;hover:bg-gray-50&quot;">
+                                <svg class="h-5 w-5 shrink-0 rotate-90 text-gray-500" x-state:on="Expanded" x-state:off="Collapsed" :class="{ 'rotate-90 text-gray-500': open, 'text-gray-400': !(open) }" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                    <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"></path>
+                                </svg>
+                                Updates
+                        </button>
+                        <ul x-description="Expandable link section, show/hide based on state." class="mt-1 px-2 space-y-1" id="sub-menu-1" x-show="open" style="">
+                            <li>
+                                <a href="#" class="hover:bg-gray-100 block rounded-md py-2 pr-2 pl-9 text-sm leading-6 text-gray-700">All Updates (0)</a>
+                            </li>
+                            <li>
+                                <a href="#" class="hover:bg-gray-100 block rounded-md py-2 pr-2 pl-9 text-sm leading-6 text-gray-700">New Records (0)</a>
+                            </li>
+                            <li>
+                                <a href="#" class="hover:bg-gray-100 block rounded-md py-2 pr-2 pl-9 text-sm leading-6 text-gray-700">Records with updates (0)</a>
+                            </li>
+                            <li>
+                                <a href="#" class="hover:bg-gray-100 block rounded-md py-2 pr-2 pl-9 text-sm leading-6 text-gray-700">Records for deletion (0)</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#" class="hover:bg-gray-100 block rounded-md py-2 pr-2 pl-10 text-sm leading-6 font-medium text-gray-900" x-state-description="undefined: &quot;bg-gray-50&quot;, undefined: &quot;hover:bg-gray-50&quot;">Drafts (0)</a>
+        </li>
+        <li>
+            <a href="#" class="hover:bg-gray-100 block rounded-md py-2 pr-2 pl-10 text-sm leading-6 font-medium text-gray-900" x-state-description="undefined: &quot;bg-gray-50&quot;, undefined: &quot;hover:bg-gray-50&quot;">Trash (0)</a>
         </li>
     </ul>
 </nav>
