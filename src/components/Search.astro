@@ -3,8 +3,8 @@ import Button from '../components/Button.astro';
 import searchIcon from '../assets/search-icon.svg?raw'; //import as a string
 ---
 
-<form id="searchFilterForm" name="searchFilterForm" method="post" action="/ds9/admin/browserecords.seam" enctype="application/x-www-form-urlencoded" class="w-full flex justify-between">
-    <div id="searchWizard" class="flex flex-col gap-3">
+<form id="searchFilterForm" name="searchFilterForm" method="post" action="/ds9/admin/browserecords.seam" enctype="application/x-www-form-urlencoded" class="flex justify-between">
+    <div id="searchWizard" class="flex flex-col gap-3 mr-4">
         <div class="flex items-center gap-3">
             <select name="searchFilterForm:j_id39" class="px-3 py-2 border rounded enabled:hover:border-gray-400 disabled:opacity-75" size="1">
                 <option value="org.jboss.seam.ui.NoSelectionConverter.noSelectionValue" selected="selected">Search all...</option>
@@ -27,22 +27,21 @@ import searchIcon from '../assets/search-icon.svg?raw'; //import as a string
                 <input id="searchFilterForm:recordFilter_0" type="text" name="searchFilterForm:recordFilter_0" class="px-3 py-2 border rounded enabled:hover:border-gray-400 disabled:opacity-75" placeholder="Enter words to search for:">
             </div>    
             <p class="recordFilterButtons">
-                <Button>
+                <Button variant="secondary">
                     <span set:html={searchIcon} />
                     Search
                 </Button>                
-                <input type="submit" name="searchFilterForm:j_id59" value="Reset" class="border rounded px-3 py-2">
+                <Button>Reset</Button>
             </p>
             <strong>Showing 329 records</strong>
         </div>
 
-        <Button>new clause</Button>
+        <a href="#" class="hover:underline">+ new clause</a>
     </div>    
     
     <ul class="flex flex-col gap-2">
-        <li><a href="#" id="searchFilterForm:j_id65" class="">Switch to syntax</a></li>
-        <li><a href="#" id="searchFilterForm:gotolink" class="">Jump to record</a></li>
-        <li><Button>Export to csv</Button></li>
+        <li><a href="#" id="searchFilterForm:j_id65" class="hover:underline">Switch to syntax</a></li>
+        <li><Button>Jump to record</Button></li>
     </ul>        
         
 </form>

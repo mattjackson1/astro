@@ -4,17 +4,23 @@ import Button from '../components/Button.astro';
 
 <div class="flex justify-between items-center">
     <div class="flex gap-1 p-2">
-        <Button variant="outline">
+        <Button className="mr-5">
+            Select all
+        </Button>
+        <Button>
             Clone to drafts
         </Button>
-        <Button variant="outline">
+        <Button>
             Move to Archive
         </Button>
-        <Button variant="outline">
+        <Button className="mr-5">
             Delete
         </Button>
-        <Button variant="outline">
+        <Button>
             Run a report
+        </Button>
+        <Button>
+            Export to CSV
         </Button>
     </div>
     <ol class="flex gap-4 p-2">

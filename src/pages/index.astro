@@ -16,15 +16,9 @@ import Pagination from '../components/Pagination.astro';
 					<div class="min-w-0 flex-1">
 						<h1 class="text-2xl font-semibold leading-7 text-gray-900 sm:truncate">DS4 Admin</h1>
 					</div>
-					<div class="flex items-center space-x-2">
-						<Button variant="secondary">
-							Add a record
-						</Button>
-						<a class="px-3">Records</a>
-						<a class="px-3">Updates (0)</a>
-						<a class="px-3">Drafts (49)</a>
-						<a class="px-3">Trash (73)</a>
-					</div>
+
+					<Search />
+					
 				</div>
 			</div>
 		</div>
@@ -33,7 +27,15 @@ import Pagination from '../components/Pagination.astro';
 
 			<Banner />
 
-			<Search />
+			<div class="flex items-center space-x-2">
+				<Button variant="secondary">
+					Add a record
+				</Button>
+				<a class="px-3">Records</a>
+				<a class="px-3">Updates (0)</a>
+				<a class="px-3">Drafts (49)</a>
+				<a class="px-3">Trash (73)</a>
+			</div>
 		
 			<div class="divide-y divide-gray-200 overflow-hidden border border-gray-200 rounded-lg bg-white shadow-sm">
 				<div class="bg-gray-50 px-5 py-4 flex flex-wrap items-center justify-between sm:flex-nowrap">
