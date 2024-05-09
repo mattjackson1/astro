@@ -3,10 +3,11 @@ import Button from '../components/Button.astro';
 ---
 
 <div class="flex justify-between items-center">
-    <div class="flex gap-1 p-2">
-        <Button className="mr-5">
+    <div class="flex gap-1 p-2" x-data="{ isEnabled: false }">
+        <Button className="mr-5" @click="isEnabled = !isEnabled">
             Select all
         </Button>
+        <div :class="isEnabled ? 'block' : 'hidden'">sss</div>
         <Button disabled={true}>
             Clone to drafts
         </Button>
