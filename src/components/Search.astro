@@ -44,7 +44,7 @@ import searchIcon from '../assets/search-icon.svg?raw'; //import as a string
         <li x-data="{ modalOpen: false }">
             <button @click="modalOpen = ! modalOpen" @click.outside="modalOpen = false">Jump to record</button>
             <template x-teleport="body">
-                <div x-show="modalOpen" class="fixed inset-0 flex items-center justify-center z-50">
+                <div x-show="modalOpen" class="fixed inset-0 flex items-center justify-center z-50 ">
                     <!-- Overlay -->
                     <div class="fixed inset-0 bg-black opacity-50"></div>
                     <!-- Modal Dialog -->
