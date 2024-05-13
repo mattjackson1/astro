@@ -1,26 +1,27 @@
 ---
 import Button from '../components/Button.astro';
+import ButtonDisabled from '../components/ButtonDisabled.astro';
 ---
 
 <div class="flex justify-between items-center">
     <div class="flex gap-1 p-2" x-data="{ isEnabled: false }">
-        <Button className="mr-5" @click="isEnabled = !isEnabled">
+        <button @click="allSelected = !allSelected" class="bg-blue-600 hover:bg-blue-800 text-white  inline-flex items-center gap-x-1 rounded-md px-3 py-2 text-sm whitespace-nowrap font-medium shadow-sm focus:ring-1 ring-inset ring-gray-300 hover:ring-gray-400 ease-in duration-200 disabled:opacity-50 disabled:cursor-not-allowed mr-5">
             Select all
-        </Button>
-        <div :class="isEnabled ? 'block' : 'hidden'">sss</div>
-        <Button disabled={true}>
+        </button>
+
+        <ButtonDisabled>
             Clone to drafts
-        </Button>
-        <Button disabled={true}>
+        </ButtonDisabled>
+        <ButtonDisabled>
             Move to Archive
-        </Button>
-        <Button disabled={true} className="mr-5">
+        </ButtonDisabled>
+        <ButtonDisabled className="mr-5">
             Delete
-        </Button>
-        <Button disabled={true}>
+        </ButtonDisabled>
+        <Button>
             Run a report
         </Button>
-        <Button disabled={true}>
+        <Button>
             Export to CSV
         </Button>
     </div>

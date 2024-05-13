@@ -4,7 +4,7 @@ import Nav from '../components/Nav.astro';
 import Search from '../components/Search.astro';
 import Banner from '../components/Banner.html'
 import Button from '../components/Button.astro';
-import Table from '../components/Table.html';
+import Table from '../components/Table.astro';
 import Pagination from '../components/Pagination.astro';
 ---
 
@@ -12,7 +12,7 @@ import Pagination from '../components/Pagination.astro';
 	<div class="flex flex-1 xl:overflow-hidden">
 		<div aria-label="Sections" class="hidden xl:flex flex-col w-72 flex-shrink-0 border-r border-gray-200 bg-white">
 			<div class="min-h-0 flex-1 overflow-y-auto px-4 space-y-2 pt-2 pb-8 mb-8">
-			<Nav client:load />
+			<Nav />
 			</div>
 		</div>
 		
@@ -40,8 +40,7 @@ import Pagination from '../components/Pagination.astro';
 						Add a record
 					</Button>
 				</div>
-			
-				<div class="divide-y divide-gray-200 overflow-hidden border border-gray-200 rounded-lg bg-white shadow-sm">
+				<div x-data="{ allSelected: false }" class="divide-y divide-gray-200 overflow-hidden border border-gray-200 rounded-lg bg-white shadow-sm">
 					<Pagination />
 					
 					<Table />

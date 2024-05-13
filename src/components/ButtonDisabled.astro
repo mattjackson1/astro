@@ -1,0 +1,18 @@
+---
+interface Props {
+    className?: string;
+    children: any;
+}
+
+const { variant = 'outline', className = '', disabled, children } = Astro.props;
+
+const variantClasses = {
+  primary: 'bg-cobalt hover:bg-cobalt-900 text-white',
+  secondary: 'bg-blue-600 hover:bg-blue-800 text-white',
+  outline: 'bg-white hover:bg-gray-100 border border-gray-300 hover:border-gray-400 text-gray-900',
+};
+---
+
+<button x-bind:disabled="!allSelected" class={`${variantClasses[variant]} ${className} inline-flex items-center gap-x-1 rounded-md px-3 py-2 text-sm whitespace-nowrap font-medium shadow-sm focus:ring-1 ring-inset ring-gray-300 hover:ring-gray-400 ease-in duration-200 disabled:opacity-50 disabled:cursor-not-allowed`}>
+    <slot />
+</button>
