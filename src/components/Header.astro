@@ -5,8 +5,112 @@ const { product } = Astro.props;
 ---
 
 <nav id="nav" class="bg-cobalt text-white sticky top-0 w-full z-50">
+    
     <div class="mx-auto max-w-none px-4 xl:px-6">
         <div class="relative flex h-16">
+            <div class="inset-y-0 left-0 flex items-center xl:hidden" x-data="{open:false}">
+                <button type="button" class="inline-flex items-center justify-center rounded p-1 text-white hover:bg-idox-brand-blue-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-expanded="false" @click="open = ! open">
+                    <span class="sr-only">Open main menu</span>
+                    <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="bars" class="svg-inline--fa fa-bars fa-w-14 block h-5 w-5" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                        <path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path>
+                    </svg>
+                </button>
+                <template x-teleport="body" data-teleport-template="true">
+                    <div id="mobileMenu" class="relative z-50 xl:hidden" role="dialog" aria-modal="true" x-cloak="" x-show="open">
+                        <!--BG-->
+                        <div class="fixed inset-0 bg-gray-900/80" x-transition:enter="transition-opacity ease-linear duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition-opacity ease-linear duration-300" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"></div>
+        
+                        <div class="fixed inset-0 flex" x-transition:enter="transition ease-in-out duration-300 transform" x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0" x-transition:leave="transition ease-in-out duration-300 transform" x-transition:leave-start="translate-x-0" x-transition:leave-end="-translate-x-full">
+        
+                            <div class="relative mr-16 flex w-full max-w-sm flex-1">
+        
+                                <div class="absolute left-full top-0 flex w-16 justify-center pt-5" x-transition:enter="ease-in-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="ease-in-out duration-300" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
+                                    <button type="button" class="-m-2.5 p-2.5" @click="open = false" onclick="addScrolling()">
+                                        <span class="sr-only">Close sidebar</span>
+                                        <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+        
+                                <div class="flex flex-row grow bg-white shadow-sm z-50 shadow-md" id="mobileMenu" @click.outside="open = false">
+                                    <div class="flex flex-col grow-0 bg-gray-50 space-y-2 px-2 pt-4 pb-3 border-r border-gray-100 w-24">
+                                        <a href="#" class="flex flex-col text-center text-gray-900 hover:bg-gray-100 rounded-md px-3 py-3 font-medium text-sm flex flex-row justify-between items-center w-full min-h-16" id="headlessui-disclosure-button-:r15:" type="button" aria-expanded="false" data-headlessui-state="">
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512" class="h-5 w-5 mb-2 fill-blue-600">
+                                                <path d="M482.696 299.276l-32.61-18.827a195.168 195.168 0 0 0 0-48.899l32.61-18.827c9.576-5.528 14.195-16.902 11.046-27.501-11.214-37.749-31.175-71.728-57.535-99.595-7.634-8.07-19.817-9.836-29.437-4.282l-32.562 18.798a194.125 194.125 0 0 0-42.339-24.48V38.049c0-11.13-7.652-20.804-18.484-23.367-37.644-8.909-77.118-8.91-114.77 0-10.831 2.563-18.484 12.236-18.484 23.367v37.614a194.101 194.101 0 0 0-42.339 24.48L105.23 81.345c-9.621-5.554-21.804-3.788-29.437 4.282-26.36 27.867-46.321 61.847-57.535 99.595-3.149 10.599 1.47 21.972 11.046 27.501l32.61 18.827a195.168 195.168 0 0 0 0 48.899l-32.61 18.827c-9.576 5.528-14.195 16.902-11.046 27.501 11.214 37.748 31.175 71.728 57.535 99.595 7.634 8.07 19.817 9.836 29.437 4.283l32.562-18.798a194.08 194.08 0 0 0 42.339 24.479v37.614c0 11.13 7.652 20.804 18.484 23.367 37.645 8.909 77.118 8.91 114.77 0 10.831-2.563 18.484-12.236 18.484-23.367v-37.614a194.138 194.138 0 0 0 42.339-24.479l32.562 18.798c9.62 5.554 21.803 3.788 29.437-4.283 26.36-27.867 46.321-61.847 57.535-99.595 3.149-10.599-1.47-21.972-11.046-27.501zm-65.479 100.461l-46.309-26.74c-26.988 23.071-36.559 28.876-71.039 41.059v53.479a217.145 217.145 0 0 1-87.738 0v-53.479c-33.621-11.879-43.355-17.395-71.039-41.059l-46.309 26.74c-19.71-22.09-34.689-47.989-43.929-75.958l46.329-26.74c-6.535-35.417-6.538-46.644 0-82.079l-46.329-26.74c9.24-27.969 24.22-53.869 43.929-75.969l46.309 26.76c27.377-23.434 37.063-29.065 71.039-41.069V44.464a216.79 216.79 0 0 1 87.738 0v53.479c33.978 12.005 43.665 17.637 71.039 41.069l46.309-26.76c19.709 22.099 34.689 47.999 43.929 75.969l-46.329 26.74c6.536 35.426 6.538 46.644 0 82.079l46.329 26.74c-9.24 27.968-24.219 53.868-43.929 75.957zM256 160c-52.935 0-96 43.065-96 96s43.065 96 96 96 96-43.065 96-96-43.065-96-96-96zm0 160c-35.29 0-64-28.71-64-64s28.71-64 64-64 64 28.71 64 64-28.71 64-64 64z"></path>
+                                            </svg>
+                                            <span class="text-xs text-gray-700">Dashboard</span>
+                                        </a>
+                                        <a href="#" class="flex flex-col text-center text-gray-900 bg-blue-100 rounded-md px-3 py-3 font-semibold text-sm flex flex-row justify-between items-center w-full min-h-16" id="headlessui-disclosure-button-:r11:" type="button" aria-expanded="false" data-headlessui-state="">
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512" class="h-5 w-5 mb-2 fill-blue-600">
+                                                <path d="M313.6 288c-28.7 0-42.5 16-89.6 16-47.1 0-60.8-16-89.6-16C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4zM416 464c0 8.8-7.2 16-16 16H48c-8.8 0-16-7.2-16-16v-41.6C32 365.9 77.9 320 134.4 320c19.6 0 39.1 16 89.6 16 50.4 0 70-16 89.6-16 56.5 0 102.4 45.9 102.4 102.4V464zM224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm0-224c52.9 0 96 43.1 96 96s-43.1 96-96 96-96-43.1-96-96 43.1-96 96-96z"></path>
+                                            </svg>
+                                            <span class="text-xs text-gray-900">Directory</span>
+                                        </a>
+                                    </div>
+                                    <div class="p-4 w-full overflow-y-auto">
+                                        <ul role="list" class="flex flex-1 flex-col gap-y-7 mr-2">
+                                            <li>
+                                                <ul role="list" class="-mx-2 space-y-1">
+                                                    <li>
+                                                        <div x-data="{ open: true }">
+                                                            <button type="button" class="hover:bg-gray-100 flex items-center w-full text-left rounded-md p-2 gap-x-3 text-sm leading-6 font-medium text-gray-900" aria-controls="sub-menu-1" @click="open = !open" aria-expanded="true" x-bind:aria-expanded="open.toString()" x-state:on="Current" x-state:off="Default" x-state-description="Current: &quot;bg-gray-50&quot;, Default: &quot;hover:bg-gray-50&quot;">
+                                                                    <svg class="h-5 w-5 shrink-0 rotate-90 text-gray-500" x-state:on="Expanded" x-state:off="Collapsed" :class="{ 'rotate-90 text-gray-500': open, 'text-gray-400': !(open) }" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                                        <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"></path>
+                                                                    </svg>
+                                                                    Records
+                                                            </button>
+                                                            <ul x-description="Expandable link section, show/hide based on state." class="mt-1 px-2 space-y-1" id="sub-menu-1" x-show="open">
+                                                                <li>
+                                                                    <a class="hover:bg-gray-100 block rounded-md py-2 pr-2 pl-9 text-sm leading-6 text-gray-700" href="/">All (430)</a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#" class="bg-blue-50 block rounded-md py-2 pr-2 pl-9 text-sm leading-6 font-semibold text-gray-900">Live (330)</a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#" class="hover:bg-gray-100 block rounded-md py-2 pr-2 pl-9 text-sm leading-6 text-gray-700">Awaiting (0)</a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#" class="hover:bg-gray-100 block rounded-md py-2 pr-2 pl-9 text-sm leading-6 text-gray-700">Expired (0)</a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#" class="hover:bg-gray-100 block rounded-md py-2 pr-2 pl-9 text-sm leading-6 text-gray-700">Invalid (0)</a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#" class="hover:bg-gray-100 block rounded-md py-2 pr-2 pl-9 text-sm leading-6 text-gray-700">Archive (0)</a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div x-data="{ open: false }">
+                                                            <button type="button" class="hover:bg-gray-100 flex items-center w-full text-left rounded-md p-2 gap-x-3 text-sm leading-6 font-medium text-gray-900" aria-controls="sub-menu-2" @click="open = !open" aria-expanded="false" x-bind:aria-expanded="open.toString()">
+                                                                <svg class="text-gray-400 h-5 w-5 shrink-0" x-state:on="Expanded" x-state:off="Collapsed" :class="{ 'rotate-90 text-gray-500': open, 'text-gray-400': !(open) }" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                                    <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"></path>
+                                                                </svg>
+                                                                Updates
+                                                            </button>
+                                                            <ul x-description="Expandable link section, show/hide based on state." class="mt-1 px-2 space-y-1" id="sub-menu-2" x-show="open" style="display: none;">
+                                                                <li>
+                                                                    <a href="#" class="hover:bg-gray-100 block rounded-md py-2 pr-2 pl-9 text-sm leading-6 text-gray-700">Drafts (0)</a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#" class="hover:bg-gray-100 block rounded-md py-2 pr-2 pl-9 text-sm leading-6 text-gray-700">Trash (0)</a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>            
+                </template>
+            </div>
             <div id="head" class="flex flex-shrink-0 items-center max-xl:ml-8">
                 <Image src={logo} alt="Idox plc" width="37" height="28" loading="eager" />
                 <div class="block w-[1px] h-[35px] bg-white opacity-40 mx-4"></div>
