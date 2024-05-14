@@ -1,5 +1,6 @@
 ---
 import Header from '../components/Header.astro';
+import Nav from '../components/Nav.astro';
 
 interface Props {
 	title: string;
@@ -9,7 +10,7 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="min-h-full h-auto lg:h-full lg:min-h-0">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content="Cobalt design" />
@@ -19,9 +20,12 @@ const { title } = Astro.props;
 		<title>{title}</title>
 		<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
 	</head>
-	<body>
+	<body class="min-h-full h-full lg:min-h-0 lg:overflow-hidden">
 		<Header product="Directory" />
-		<slot />
+		<div class="flex h-full">
+			<Nav />
+			<slot />
+		</div>
 	</body>
 </html>
 <style is:global>

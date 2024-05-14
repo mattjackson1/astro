@@ -34,7 +34,7 @@ export default {
 						cursor: 'pointer'
 					}
 				},
-				'[type="text"]': {
+				'[type="text"], select, textarea': {
 					fontSize: '0.875rem',
 					padding: '0.5rem 0.75rem',
 					borderColor: '#d1d5db',
@@ -43,11 +43,6 @@ export default {
 						background: '#f3f4f6',
 						color: '#6b7280',
 					}
-				},
-				'select': {
-					fontSize: '0.875rem',
-					borderColor: '#d1d5db',
-					borderRadius: '0.25rem',
 				},
 				'th, td': {
 					padding: '0.5rem',

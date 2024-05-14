@@ -1,161 +1,154 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Nav from '../components/Nav.astro';
+import RecordActions from '../components/RecordActions.astro';
 import Button from '../components/Button.astro';
 ---
 
-<Layout title="Directory V2">
-	<div class="flex flex-1 xl:overflow-hidden">
-		<div aria-label="Sections" class="hidden xl:flex flex-col w-72 flex-shrink-0 border-r border-gray-200 bg-white">
-			<div class="min-h-0 flex-1 overflow-y-auto px-4 space-y-2 pt-2 pb-8 mb-8">
-			<Nav />
-			</div>
-		</div>
-
-
-		<main class="flex-1 xl:overflow-y-auto bg-slate-50">
-			
-			<div class="bg-white border-b border-gray-200 sticky top-0 z-10">
-				<div class="lg:w-2/3 xl:w-full xl:px-8 lg:mx-auto p-4">
-					<div class="flex items-center justify-between">
-						<div class="min-w-0 flex-1">
-							<h1 class="text-2xl font-semibold leading-7 text-gray-900 sm:truncate">DS4 Admin</h1>
-						</div>
-					</div>
-				</div>
-			</div>
-			
-			<div class="flex flex-col space-y-6 p-4 m-0 mb-16 w-full sm:p-8 lg:mx-auto lg:w-2/3">
-
-				<div class="divide-y divide-gray-200 overflow-hidden border border-gray-200 rounded-lg bg-white shadow-sm">
-					<div class="bg-gray-50 px-5 py-4">
-						<div class="flex flex-wrap items-center justify-between">
-							<h2 class="text-md font-semibold leading-6 text-gray-900">Status:Live</h2>
-							<span> Source:Migrated Record </span>
-						</div>
-						<div class="flex flex-wrap items-center justify-between">
-							
-							<span class="block mb-3"> Last admin update:31/01/2024 by: merry.collins@redbridge.gov.uk </span>
-							<span class="block mb-3"> Created on: 18/03/2016 External Id: 8S_qBNxvmBI </span>
-				
-							<div class="formControls flex gap-3">
-								<input type="submit" class="bg-blue-600 hover:bg-blue-800 text-white  inline-flex items-center gap-x-1 rounded-md px-3 py-2 text-sm whitespace-nowrap font-medium shadow-sm focus:ring-1 ring-inset ring-gray-300 hover:ring-gray-400 ease-in duration-200 disabled:opacity-50 disabled:cursor-not-allowed" name="recordform:j_id163" value="Update Record">
-								<input type="submit" class="bg-white hover:bg-gray-100 border border-gray-300 hover:border-gray-400 text-gray-900  inline-flex items-center gap-x-1 rounded-md px-3 py-2 text-sm whitespace-nowrap font-medium shadow-sm focus:ring-1 ring-inset ring-gray-300 hover:ring-gray-400 ease-in duration-200 disabled:opacity-50 disabled:cursor-not-allowed" name="recordform:j_id168" value="Move to Archive">
-								<input type="submit" class="bg-white hover:bg-gray-100 border border-gray-300 hover:border-gray-400 text-gray-900  inline-flex items-center gap-x-1 rounded-md px-3 py-2 text-sm whitespace-nowrap font-medium shadow-sm focus:ring-1 ring-inset ring-gray-300 hover:ring-gray-400 ease-in duration-200 disabled:opacity-50 disabled:cursor-not-allowed" name="recordform:j_id169" value="Delete">
-								<input type="submit" class="bg-white hover:bg-gray-100 border border-gray-300 hover:border-gray-400 text-gray-900  inline-flex items-center gap-x-1 rounded-md px-3 py-2 text-sm whitespace-nowrap font-medium shadow-sm focus:ring-1 ring-inset ring-gray-300 hover:ring-gray-400 ease-in duration-200 disabled:opacity-50 disabled:cursor-not-allowed" name="recordform:j_id172" value="Clone to Drafts">
-							</div>
-							
-							<ul class="modeTabs">
-								<li class="hidden"><a href="#" id="recordform:j_id177" name="recordform:j_id177" onclick="A4J.AJAX.Submit('recordform',event,{'similarityGroupingId':'recordform:j_id177','oncomplete':function(request,event,data){attachEventHandlers()},'parameters':{'recordform:j_id177':'recordform:j_id177'} } );return false;">Showing record</a></li>
-								<li x-data="{ modalOpen: false }">
-									<button @click="modalOpen = ! modalOpen" @click.outside="modalOpen = false" class="bg-white hover:bg-gray-100 border border-gray-300 hover:border-gray-400 text-gray-900  inline-flex items-center gap-x-1 rounded-md px-3 py-2 text-sm whitespace-nowrap font-medium shadow-sm focus:ring-1 ring-inset ring-gray-300 hover:ring-gray-400 ease-in duration-200 disabled:opacity-50 disabled:cursor-not-allowed">Show history</button>
-									<template x-teleport="body">
-										<div x-show="modalOpen" class="fixed inset-0 flex items-center justify-center z-50 ">
-											<!-- Overlay -->
-											<div class="fixed inset-0 bg-black opacity-50"></div>
-											<!-- Modal Dialog -->
-											<div class="bg-white rounded-lg p-6 max-w-xl w-full z-10">
-												<div class="flex items-center justify-between mb-4">
-													<h2 class="text-lg font-semibold">History of record</h2>
-													<button class="bg-none text-gray-500 hover:text-gray-700 p-1 rounded-md outline-none border-none flex items-center transition-all duration-100 ease-linear justify-center focus-visible:outline-2 focus-visible:outline-accent" tabindex="0" onclick="hideSlideover()">
-														<svg class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-															<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
-														</svg>
-														<span class="sr-only">Close panel</span>
-													</button>
-												</div>
-												<div class="tabs">
-													<ul>
-														<li><a href="#" class="current" rel="tab-manual" onclick="openTab(event, 'tab-manual');">Manual</a></li>
-														<li><a href="#" rel="tab-system" onclick="openTab(event, 'tab-system');" class="">System</a></li>
-													</ul>
-													<div class="tab first" id="tab-manual" style="display: block;">
-														<table class="rich-table styled fullwidthtable" id="recordform:j_id7809:j_id7811" border="0" cellpadding="0" cellspacing="0">
-															<colgroup span="3"></colgroup>
-															<thead class="rich-table-thead"><tr class="rich-table-subheader"><th class="rich-table-subheadercell" scope="col">Revision Action</th><th class="rich-table-subheadercell" scope="col">Date</th><th class="rich-table-subheadercell" scope="col">By</th></tr></thead>
-															<tbody id="recordform:j_id7809:j_id7811:tb"><tr class="rich-table-row rich-table-firstrow"><td id="recordform:j_id7809:j_id7811:0:j_id7812" class="rich-table-cell">Created</td><td id="recordform:j_id7809:j_id7811:0:j_id7815" class="rich-table-cell">17/09/2019 15:39:33</td><td id="recordform:j_id7809:j_id7811:0:j_id7818" class="rich-table-cell">Chris.morris@bedford.gov.uk</td></tr><tr class="rich-table-row"><td id="recordform:j_id7809:j_id7811:1:j_id7812" class="rich-table-cell">Updated</td><td id="recordform:j_id7809:j_id7811:1:j_id7815" class="rich-table-cell">18/09/2019 13:45:19</td><td id="recordform:j_id7809:j_id7811:1:j_id7818" class="rich-table-cell">Chris.morris@bedford.gov.uk</td></tr><tr class="rich-table-row"><td id="recordform:j_id7809:j_id7811:2:j_id7812" class="rich-table-cell">Updated</td><td id="recordform:j_id7809:j_id7811:2:j_id7815" class="rich-table-cell">21/10/2019 12:11:45</td><td id="recordform:j_id7809:j_id7811:2:j_id7818" class="rich-table-cell">Sorcha.OLoughlin@bedford.gov.uk</td></tr><tr class="rich-table-row"><td id="recordform:j_id7809:j_id7811:3:j_id7812" class="rich-table-cell">Updated</td><td id="recordform:j_id7809:j_id7811:3:j_id7815" class="rich-table-cell">11/02/2022 09:09:53</td><td id="recordform:j_id7809:j_id7811:3:j_id7818" class="rich-table-cell">ccs.lutonandbeds@nhs.net</td></tr><tr class="rich-table-row"><td id="recordform:j_id7809:j_id7811:4:j_id7812" class="rich-table-cell">Updated</td><td id="recordform:j_id7809:j_id7811:4:j_id7815" class="rich-table-cell">15/02/2022 11:08:42</td><td id="recordform:j_id7809:j_id7811:4:j_id7818" class="rich-table-cell">Sorcha.OLoughlin@bedford.gov.uk</td></tr><tr class="rich-table-row"><td id="recordform:j_id7809:j_id7811:5:j_id7812" class="rich-table-cell">Updated</td><td id="recordform:j_id7809:j_id7811:5:j_id7815" class="rich-table-cell">27/02/2023 12:53:42</td><td id="recordform:j_id7809:j_id7811:5:j_id7818" class="rich-table-cell">Gillian.Freame@bedford.gov.uk</td></tr><tr class="rich-table-row"><td id="recordform:j_id7809:j_id7811:6:j_id7812" class="rich-table-cell">Updated</td><td id="recordform:j_id7809:j_id7811:6:j_id7815" class="rich-table-cell">14/03/2023 07:56:51</td><td id="recordform:j_id7809:j_id7811:6:j_id7818" class="rich-table-cell">Gillian.Freame@bedford.gov.uk</td></tr></tbody></table></div><div class="tab" id="tab-system" style="display: none;"><div id="recordform:j_id7809:j_id7834">No system revisions.</div></div></div>
-											</div>
-										</div>
-									</template>
-								</li>
-							</ul>
-							
-							<ul class="flex flex-wrap items-center justify-between gap-1">
-								<li><Button>&laquo;</Button></li>
-								<li><Button>&lt;</Button></li>
-								<li><span>3 of 5</span></li>
-								<li><Button>&gt;</Button></li>
-								<li><Button>&raquo;</Button></li>
-							</ul>
-						</div>					
-					</div>
-
-					<fieldset class="m-3">
-						<legend class="">Select a Page Type</legend>
-						<div id="recordform:j_id250" class="description mb-3">Please choose a page type. Once selected you will be able to specify content and settings appropriate for the selected page type.</div>
-						<div id="recordform:layout_node_181789"><div id="recordform:_formRow_resource_type" class="flex gap-2 mb-3">
-			<a class="formanchor" name="resource_type">&nbsp;</a>
-			<label class="required font-semibold">
-		Page type&nbsp;</label><div id="recordform:resource_type" class="inputWrapper typeinput"><div id="recordform:_resource_type_wrapper" class="widgetInput widgetInputNoScroll checkradio">
-			
-			<table id="recordform:_resource_type_checkRadio" class="w-full">
-					<tbody class="flex"><tr class="inline">
-						<td>
-						<input type="radio" checked="checked" name="recordform:_resource_type_checkRadio" id="recordform:_resource_type_checkRadio:0" value="0" onchange="A4J.AJAX.Submit('recordform',event,{'similarityGroupingId':'recordform:j_id260','control':this,'oncomplete':function(request,event,data){attachEventHandlers()},'parameters':{'recordform:j_id260':'recordform:j_id260','ajaxSingle':'recordform:_resource_type_checkRadio'} } )"><label for="recordform:_resource_type_checkRadio:0"> Advice &amp; Guidance</label></td>
-					</tr>
-					<tr class="inline">
-						<td>
-						<input type="radio" name="recordform:_resource_type_checkRadio" id="recordform:_resource_type_checkRadio:1" value="1" onchange="A4J.AJAX.Submit('recordform',event,{'similarityGroupingId':'recordform:j_id260','control':this,'oncomplete':function(request,event,data){attachEventHandlers()},'parameters':{'recordform:j_id260':'recordform:j_id260','ajaxSingle':'recordform:_resource_type_checkRadio'} } )"><label for="recordform:_resource_type_checkRadio:1"> Site Page</label></td>
-					</tr>
-					<tr class="inline">
-						<td>
-						<input type="radio" name="recordform:_resource_type_checkRadio" id="recordform:_resource_type_checkRadio:2" value="2" onchange="A4J.AJAX.Submit('recordform',event,{'similarityGroupingId':'recordform:j_id260','control':this,'oncomplete':function(request,event,data){attachEventHandlers()},'parameters':{'recordform:j_id260':'recordform:j_id260','ajaxSingle':'recordform:_resource_type_checkRadio'} } )"><label for="recordform:_resource_type_checkRadio:2"> Category Page</label></td>
-					</tr>
-					<tr class="inline">
-						<td>
-						<input type="radio" name="recordform:_resource_type_checkRadio" id="recordform:_resource_type_checkRadio:3" value="3" onchange="A4J.AJAX.Submit('recordform',event,{'similarityGroupingId':'recordform:j_id260','control':this,'oncomplete':function(request,event,data){attachEventHandlers()},'parameters':{'recordform:j_id260':'recordform:j_id260','ajaxSingle':'recordform:_resource_type_checkRadio'} } )"><label for="recordform:_resource_type_checkRadio:3"> Page Fragment</label></td>
-					</tr>
-					<tr class="inline">
-						<td>
-						<input type="radio" name="recordform:_resource_type_checkRadio" id="recordform:_resource_type_checkRadio:4" value="4" onchange="A4J.AJAX.Submit('recordform',event,{'similarityGroupingId':'recordform:j_id260','control':this,'oncomplete':function(request,event,data){attachEventHandlers()},'parameters':{'recordform:j_id260':'recordform:j_id260','ajaxSingle':'recordform:_resource_type_checkRadio'} } )"><label for="recordform:_resource_type_checkRadio:4"> News Article</label></td>
-					</tr>
-					<tr class="inline">
-						<td>
-						<input type="radio" name="recordform:_resource_type_checkRadio" id="recordform:_resource_type_checkRadio:5" value="5" onchange="A4J.AJAX.Submit('recordform',event,{'similarityGroupingId':'recordform:j_id260','control':this,'oncomplete':function(request,event,data){attachEventHandlers()},'parameters':{'recordform:j_id260':'recordform:j_id260','ajaxSingle':'recordform:_resource_type_checkRadio'} } )"><label for="recordform:_resource_type_checkRadio:5"> Home Page</label></td>
-					</tr>
-				</tbody>
-			</table>
-			
-			<div class="tooltipholder hidden">
-				<span class="tooltip offscreen" data-for="recordform:_resource_type_checkRadio:0">Advice &amp; Guidance</span>
-				<span class="offscreen tooltip" data-for="recordform:_resource_type_checkRadio:1">Site Page</span>
-				<span class="tooltip offscreen" data-for="recordform:_resource_type_checkRadio:2">Category Page</span>
-				<span class="tooltip offscreen" data-for="recordform:_resource_type_checkRadio:3">Page Fragment</span>
-				<span class="offscreen tooltip" data-for="recordform:_resource_type_checkRadio:4">News Article</span>
-				<span class="tooltip offscreen" data-for="recordform:_resource_type_checkRadio:5">Home Page</span>
-			</div>
-		</div>
-		<div id="recordform:j_id269" class="flex"><a href="#" class="text-sm" id="recordform:j_id270" onclick="A4J.AJAX.Submit('recordform',event,{'similarityGroupingId':'recordform:j_id270','eventsQueue':'typeQueue','parameters':{'recordform:j_id270':'recordform:j_id270'} } );return false;">Clear</a></div><div id="recordform:j_id271" class="message"></div></div></div></div><div id="recordform:layout_node_181791"><div id="recordform:_formRow_title" class="flex gap-2 mb-3">
-			<a class="formanchor" name="title">&nbsp;</a><label class="required font-semibold">
-			Page title&nbsp;</label>
+<Layout title="Directory V2">	
+	<main class="flex-1 overflow-y-auto bg-slate-50">
 		
-		<div class="inline w-full"><input id="recordform:title_0" type="text" name="recordform:title_0" value="Information for new or existing Personal Assistants" class="string">
-			<div class="message"></div>
-		</div></div></div>
-				</fieldset>
+		<div class="bg-white border-b border-gray-200 sticky top-0 z-10">
+			<div class="lg:w-2/3 xl:w-full xl:px-8 lg:mx-auto p-4">
+				<div class="flex items-center justify-between">
+					<div class="min-w-0 flex-1">
+						<h1 class="text-2xl font-semibold leading-7 text-gray-900 sm:truncate">DS4 Admin</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="flex flex-col space-y-6 p-4 m-0 mb-16 w-full sm:py-8 lg:mx-auto lg:w-2/3">
 
-				<div x-data="{ open: false }">
-					<h1 type="button" class="bg-cobalt text-white px-3 py-2 flex justify-between" aria-controls="sub-menu-1" @click="open = !open" aria-expanded="true" x-bind:aria-expanded="open.toString()" x-state:on="Current" x-state:off="Default" x-state-description="Current: &quot;bg-gray-50&quot;, Default: &quot;hover:bg-gray-50&quot;">
-						Core Details
-						<svg class="h-5 w-5 shrink-0 rotate-90 text-white" x-state:on="Expanded" x-state:off="Collapsed" :class="{ 'rotate-90 text-gray-500': open, 'text-gray-400': !(open) }" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-							<path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"></path>
-						</svg>
-					</h1>
-
-					<div x-show="open" id="recordform:layout_node_71841" class="p-3"><div id="recordform:_formRow_contact_email" class="formRow flex"><a id="contact_email" class="formanchor" name="contact_email">&nbsp;</a><label class="font-semibold">Email&nbsp;</label> <div class="inputWrapper"><input id="recordform:contact_email_0" type="text" name="recordform:contact_email_0" value="" class="string"> <div class="message"></div></div></div></div>
+			<div class="divide-y divide-gray-200 overflow-hidden border border-gray-200 rounded-lg bg-white shadow-sm">
+				<div class="bg-gray-50 px-5 py-4">
+					<div class="flex flex-wrap items-center justify-between">
+						<h2 class="text-md font-semibold leading-6 text-gray-900">Status:Live</h2>
+						<span> Source:Migrated Record </span>
+					</div>
+					<div class="flex flex-wrap items-center justify-between">
+						
+						<span class="block mb-3"> Last admin update:31/01/2024 by: merry.collins@redbridge.gov.uk </span>
+						<span class="block mb-3"> Created on: 18/03/2016 External Id: 8S_qBNxvmBI </span>
+			
+						<RecordActions/>
+					</div>
 				</div>
 
-			</div>
-		</main>
+				<fieldset class="m-3">
+					<legend class="">Select a Page Type</legend>
+					<div id="recordform:j_id250" class="description mb-3">Please choose a page type. Once selected you will be able to specify content and settings appropriate for the selected page type.</div>
+					<div id="recordform:layout_node_181789"><div id="recordform:_formRow_resource_type" class="flex gap-2 mb-3">
+		<a class="formanchor hidden" name="resource_type">&nbsp;</a>
+		<label class="required font-semibold w-32">
+	Page type&nbsp;</label><div id="recordform:resource_type" class="inputWrapper typeinput"><div id="recordform:_resource_type_wrapper" class="widgetInput widgetInputNoScroll checkradio">
+		
+		<table id="recordform:_resource_type_checkRadio" class="w-full">
+				<tbody class="flex"><tr class="inline">
+					<td>
+					<input type="radio" checked="checked" name="recordform:_resource_type_checkRadio" id="recordform:_resource_type_checkRadio:0" value="0" onchange="A4J.AJAX.Submit('recordform',event,{'similarityGroupingId':'recordform:j_id260','control':this,'oncomplete':function(request,event,data){attachEventHandlers()},'parameters':{'recordform:j_id260':'recordform:j_id260','ajaxSingle':'recordform:_resource_type_checkRadio'} } )"><label for="recordform:_resource_type_checkRadio:0"> Advice &amp; Guidance</label></td>
+				</tr>
+				<tr class="inline">
+					<td>
+					<input type="radio" name="recordform:_resource_type_checkRadio" id="recordform:_resource_type_checkRadio:1" value="1" onchange="A4J.AJAX.Submit('recordform',event,{'similarityGroupingId':'recordform:j_id260','control':this,'oncomplete':function(request,event,data){attachEventHandlers()},'parameters':{'recordform:j_id260':'recordform:j_id260','ajaxSingle':'recordform:_resource_type_checkRadio'} } )"><label for="recordform:_resource_type_checkRadio:1"> Site Page</label></td>
+				</tr>
+				<tr class="inline">
+					<td>
+					<input type="radio" name="recordform:_resource_type_checkRadio" id="recordform:_resource_type_checkRadio:2" value="2" onchange="A4J.AJAX.Submit('recordform',event,{'similarityGroupingId':'recordform:j_id260','control':this,'oncomplete':function(request,event,data){attachEventHandlers()},'parameters':{'recordform:j_id260':'recordform:j_id260','ajaxSingle':'recordform:_resource_type_checkRadio'} } )"><label for="recordform:_resource_type_checkRadio:2"> Category Page</label></td>
+				</tr>
+				<tr class="inline">
+					<td>
+					<input type="radio" name="recordform:_resource_type_checkRadio" id="recordform:_resource_type_checkRadio:3" value="3" onchange="A4J.AJAX.Submit('recordform',event,{'similarityGroupingId':'recordform:j_id260','control':this,'oncomplete':function(request,event,data){attachEventHandlers()},'parameters':{'recordform:j_id260':'recordform:j_id260','ajaxSingle':'recordform:_resource_type_checkRadio'} } )"><label for="recordform:_resource_type_checkRadio:3"> Page Fragment</label></td>
+				</tr>
+				<tr class="inline">
+					<td>
+					<input type="radio" name="recordform:_resource_type_checkRadio" id="recordform:_resource_type_checkRadio:4" value="4" onchange="A4J.AJAX.Submit('recordform',event,{'similarityGroupingId':'recordform:j_id260','control':this,'oncomplete':function(request,event,data){attachEventHandlers()},'parameters':{'recordform:j_id260':'recordform:j_id260','ajaxSingle':'recordform:_resource_type_checkRadio'} } )"><label for="recordform:_resource_type_checkRadio:4"> News Article</label></td>
+				</tr>
+				<tr class="inline">
+					<td>
+					<input type="radio" name="recordform:_resource_type_checkRadio" id="recordform:_resource_type_checkRadio:5" value="5" onchange="A4J.AJAX.Submit('recordform',event,{'similarityGroupingId':'recordform:j_id260','control':this,'oncomplete':function(request,event,data){attachEventHandlers()},'parameters':{'recordform:j_id260':'recordform:j_id260','ajaxSingle':'recordform:_resource_type_checkRadio'} } )"><label for="recordform:_resource_type_checkRadio:5"> Home Page</label></td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<div class="tooltipholder hidden">
+			<span class="tooltip offscreen" data-for="recordform:_resource_type_checkRadio:0">Advice &amp; Guidance</span>
+			<span class="offscreen tooltip" data-for="recordform:_resource_type_checkRadio:1">Site Page</span>
+			<span class="tooltip offscreen" data-for="recordform:_resource_type_checkRadio:2">Category Page</span>
+			<span class="tooltip offscreen" data-for="recordform:_resource_type_checkRadio:3">Page Fragment</span>
+			<span class="offscreen tooltip" data-for="recordform:_resource_type_checkRadio:4">News Article</span>
+			<span class="tooltip offscreen" data-for="recordform:_resource_type_checkRadio:5">Home Page</span>
+		</div>
 	</div>
+	<div id="recordform:j_id269" class="flex"><a href="#" class="text-sm" id="recordform:j_id270" onclick="A4J.AJAX.Submit('recordform',event,{'similarityGroupingId':'recordform:j_id270','eventsQueue':'typeQueue','parameters':{'recordform:j_id270':'recordform:j_id270'} } );return false;">Clear</a></div><div id="recordform:j_id271" class="message"></div></div></div></div><div id="recordform:layout_node_181791"><div id="recordform:_formRow_title" class="flex mb-3">
+		<a class="formanchor hidden" name="title">&nbsp;</a><label class="required font-semibold w-32">
+		Page title&nbsp;</label>
+	
+	<div class="inline"><input id="recordform:title_0" type="text" name="recordform:title_0" value="Information for new or existing Personal Assistants" class="string">
+		<div class="message"></div>
+	</div></div></div>
+			</fieldset>
+
+
+			<div id="recordform:layout_node_71827" class="p-3">
+				<div id="recordform:_formRow_description" class="formRow flex"><a id="description" class="formanchor hidden" name="description">&nbsp;</a>
+					<label class="font-semibold w-32">Description&nbsp;</label>
+					<div class="inputWrapper"><div class="rich-editor wysiwyg_string" id="recordform:j_id566">
+						<div class="flex bg-gray-200 p-2 gap-1">
+							<Button><span class="font-bold">B</span></Button><Button><em>i</em></Button><Button><span class="underline">A</span></Button>
+						</div>
+						<div class="border p-2">
+						A couple of services within Bedfordshire Community Health Services have come together to make a video titled 'You make the difference'. This video aims to give families advice and tips on how you can support children's communication, play, motor skills and independence.
+						</div>
+					</div>
+					<div class="message"></div>
+				</div>
+			</div>
+
+			<div x-data="{ open: false }">
+				<h1 class="font-semibold p-3 border-cobalt border-b-2" aria-controls="sub-menu-1" @click="open = !open" aria-expanded="true">
+					Core Details
+				</h1>
+
+				<div id="recordform:layout_node_71841" class="p-3"><div id="recordform:_formRow_contact_email" class="formRow flex"><a id="contact_email" class="formanchor hidden" name="contact_email">&nbsp;</a>
+					<label class="font-semibold w-32">Email&nbsp;</label> <div class="inputWrapper"><input id="recordform:contact_email_0" type="text" name="recordform:contact_email_0" value="" class="string"> <div class="message"></div></div></div>
+				
+					<ul class="divide-y divide-gray-200">
+						<li class="py-1"><a class="flex justify-between" href="javascript:void(0);" onclick="openTab(event, 'tab-71833')" rel="tab-71833">Contact
+							<svg class="h-5 w-5 shrink-0" x-state:on="Expanded" x-state:off="Collapsed" :class="{ 'text-gray-500': open, 'text-gray-400': !(open) }" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+								<path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"></path>
+							</svg>
+						</a></li>
+						<li class="py-1"><a class="flex justify-between" href="javascript:void(0);" onclick="openTab(event, 'tab-71847')" rel="tab-71847">Venue
+							<svg class="h-5 w-5 shrink-0" x-state:on="Expanded" x-state:off="Collapsed" :class="{ 'text-gray-500': open, 'text-gray-400': !(open) }" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+								<path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"></path>
+							</svg>
+						</a></li>
+						<li class="py-1"><a class="flex justify-between" href="javascript:void(0);" onclick="openTab(event, 'tab-71881')" rel="tab-71881">Date &amp; Time
+							<svg class="h-5 w-5 shrink-0" x-state:on="Expanded" x-state:off="Collapsed" :class="{ 'text-gray-500': open, 'text-gray-400': !(open) }" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+								<path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"></path>
+							</svg>
+						</a></li>
+						<li class="py-1"><a class="flex justify-between" href="javascript:void(0);" onclick="openTab(event, 'tab-71899')" rel="tab-71899">Other Details
+							<svg class="h-5 w-5 shrink-0" x-state:on="Expanded" x-state:off="Collapsed" :class="{ 'text-gray-500': open, 'text-gray-400': !(open) }" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+								<path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"></path>
+							</svg>
+						</a></li>
+						<li class="py-1"><a class="flex justify-between border-b-1" href="javascript:void(0);" onclick="openTab(event, 'tab-71921')" rel="tab-71921">Images, Files and Links
+							<svg class="h-5 w-5 shrink-0" x-state:on="Expanded" x-state:off="Collapsed" :class="{ 'text-gray-500': open, 'text-gray-400': !(open) }" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+								<path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"></path>
+							</svg>
+						</a></li>
+						<li class="py-1"><a class="flex justify-between" href="javascript:void(0);" onclick="openTab(event, 'tab-71937')" rel="tab-71937">Provider Organisation
+							<svg class="h-5 w-5 shrink-0" x-state:on="Expanded" x-state:off="Collapsed" :class="{ 'text-gray-500': open, 'text-gray-400': !(open) }" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+								<path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"></path>
+							</svg>
+						</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="flex flex-wrap items-center justify-between p-3">
+				<RecordActions/>
+			</div>
+		</div>
+	</main>
 </Layout>
