@@ -35,11 +35,11 @@ import Button from '../components/Button.astro';
 						</div>
 						<div class="flex flex-wrap items-center justify-between">
 							
-							<span class="block"> Last admin update:31/01/2024 by: merry.collins@redbridge.gov.uk </span>
-							<span class="block"> Created on: 18/03/2016 External Id: 8S_qBNxvmBI </span>
+							<span class="block mb-3"> Last admin update:31/01/2024 by: merry.collins@redbridge.gov.uk </span>
+							<span class="block mb-3"> Created on: 18/03/2016 External Id: 8S_qBNxvmBI </span>
 				
 							<div class="formControls flex gap-3">
-								<input type="submit" class="bg-white hover:bg-gray-100 border border-gray-300 hover:border-gray-400 text-gray-900  inline-flex items-center gap-x-1 rounded-md px-3 py-2 text-sm whitespace-nowrap font-medium shadow-sm focus:ring-1 ring-inset ring-gray-300 hover:ring-gray-400 ease-in duration-200 disabled:opacity-50 disabled:cursor-not-allowed" name="recordform:j_id163" value="Update Record">
+								<input type="submit" class="bg-blue-600 hover:bg-blue-800 text-white  inline-flex items-center gap-x-1 rounded-md px-3 py-2 text-sm whitespace-nowrap font-medium shadow-sm focus:ring-1 ring-inset ring-gray-300 hover:ring-gray-400 ease-in duration-200 disabled:opacity-50 disabled:cursor-not-allowed" name="recordform:j_id163" value="Update Record">
 								<input type="submit" class="bg-white hover:bg-gray-100 border border-gray-300 hover:border-gray-400 text-gray-900  inline-flex items-center gap-x-1 rounded-md px-3 py-2 text-sm whitespace-nowrap font-medium shadow-sm focus:ring-1 ring-inset ring-gray-300 hover:ring-gray-400 ease-in duration-200 disabled:opacity-50 disabled:cursor-not-allowed" name="recordform:j_id168" value="Move to Archive">
 								<input type="submit" class="bg-white hover:bg-gray-100 border border-gray-300 hover:border-gray-400 text-gray-900  inline-flex items-center gap-x-1 rounded-md px-3 py-2 text-sm whitespace-nowrap font-medium shadow-sm focus:ring-1 ring-inset ring-gray-300 hover:ring-gray-400 ease-in duration-200 disabled:opacity-50 disabled:cursor-not-allowed" name="recordform:j_id169" value="Delete">
 								<input type="submit" class="bg-white hover:bg-gray-100 border border-gray-300 hover:border-gray-400 text-gray-900  inline-flex items-center gap-x-1 rounded-md px-3 py-2 text-sm whitespace-nowrap font-medium shadow-sm focus:ring-1 ring-inset ring-gray-300 hover:ring-gray-400 ease-in duration-200 disabled:opacity-50 disabled:cursor-not-allowed" name="recordform:j_id172" value="Clone to Drafts">
@@ -47,7 +47,37 @@ import Button from '../components/Button.astro';
 							
 							<ul class="modeTabs">
 								<li class="hidden"><a href="#" id="recordform:j_id177" name="recordform:j_id177" onclick="A4J.AJAX.Submit('recordform',event,{'similarityGroupingId':'recordform:j_id177','oncomplete':function(request,event,data){attachEventHandlers()},'parameters':{'recordform:j_id177':'recordform:j_id177'} } );return false;">Showing record</a></li>
-								<li class="underline"><a href="#" id="recordform:j_id186" name="recordform:j_id186" onclick="A4J.AJAX.Submit('recordform',event,{'similarityGroupingId':'recordform:j_id186','parameters':{'recordform:j_id186':'recordform:j_id186'} } );return false;">Show history</a></li>
+								<li x-data="{ modalOpen: false }">
+									<button @click="modalOpen = ! modalOpen" @click.outside="modalOpen = false" class="bg-white hover:bg-gray-100 border border-gray-300 hover:border-gray-400 text-gray-900  inline-flex items-center gap-x-1 rounded-md px-3 py-2 text-sm whitespace-nowrap font-medium shadow-sm focus:ring-1 ring-inset ring-gray-300 hover:ring-gray-400 ease-in duration-200 disabled:opacity-50 disabled:cursor-not-allowed">Show history</button>
+									<template x-teleport="body">
+										<div x-show="modalOpen" class="fixed inset-0 flex items-center justify-center z-50 ">
+											<!-- Overlay -->
+											<div class="fixed inset-0 bg-black opacity-50"></div>
+											<!-- Modal Dialog -->
+											<div class="bg-white rounded-lg p-6 max-w-xl w-full z-10">
+												<div class="flex items-center justify-between mb-4">
+													<h2 class="text-lg font-semibold">History of record</h2>
+													<button class="bg-none text-gray-500 hover:text-gray-700 p-1 rounded-md outline-none border-none flex items-center transition-all duration-100 ease-linear justify-center focus-visible:outline-2 focus-visible:outline-accent" tabindex="0" onclick="hideSlideover()">
+														<svg class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+															<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+														</svg>
+														<span class="sr-only">Close panel</span>
+													</button>
+												</div>
+												<div class="tabs">
+													<ul>
+														<li><a href="#" class="current" rel="tab-manual" onclick="openTab(event, 'tab-manual');">Manual</a></li>
+														<li><a href="#" rel="tab-system" onclick="openTab(event, 'tab-system');" class="">System</a></li>
+													</ul>
+													<div class="tab first" id="tab-manual" style="display: block;">
+														<table class="rich-table styled fullwidthtable" id="recordform:j_id7809:j_id7811" border="0" cellpadding="0" cellspacing="0">
+															<colgroup span="3"></colgroup>
+															<thead class="rich-table-thead"><tr class="rich-table-subheader"><th class="rich-table-subheadercell" scope="col">Revision Action</th><th class="rich-table-subheadercell" scope="col">Date</th><th class="rich-table-subheadercell" scope="col">By</th></tr></thead>
+															<tbody id="recordform:j_id7809:j_id7811:tb"><tr class="rich-table-row rich-table-firstrow"><td id="recordform:j_id7809:j_id7811:0:j_id7812" class="rich-table-cell">Created</td><td id="recordform:j_id7809:j_id7811:0:j_id7815" class="rich-table-cell">17/09/2019 15:39:33</td><td id="recordform:j_id7809:j_id7811:0:j_id7818" class="rich-table-cell">Chris.morris@bedford.gov.uk</td></tr><tr class="rich-table-row"><td id="recordform:j_id7809:j_id7811:1:j_id7812" class="rich-table-cell">Updated</td><td id="recordform:j_id7809:j_id7811:1:j_id7815" class="rich-table-cell">18/09/2019 13:45:19</td><td id="recordform:j_id7809:j_id7811:1:j_id7818" class="rich-table-cell">Chris.morris@bedford.gov.uk</td></tr><tr class="rich-table-row"><td id="recordform:j_id7809:j_id7811:2:j_id7812" class="rich-table-cell">Updated</td><td id="recordform:j_id7809:j_id7811:2:j_id7815" class="rich-table-cell">21/10/2019 12:11:45</td><td id="recordform:j_id7809:j_id7811:2:j_id7818" class="rich-table-cell">Sorcha.OLoughlin@bedford.gov.uk</td></tr><tr class="rich-table-row"><td id="recordform:j_id7809:j_id7811:3:j_id7812" class="rich-table-cell">Updated</td><td id="recordform:j_id7809:j_id7811:3:j_id7815" class="rich-table-cell">11/02/2022 09:09:53</td><td id="recordform:j_id7809:j_id7811:3:j_id7818" class="rich-table-cell">ccs.lutonandbeds@nhs.net</td></tr><tr class="rich-table-row"><td id="recordform:j_id7809:j_id7811:4:j_id7812" class="rich-table-cell">Updated</td><td id="recordform:j_id7809:j_id7811:4:j_id7815" class="rich-table-cell">15/02/2022 11:08:42</td><td id="recordform:j_id7809:j_id7811:4:j_id7818" class="rich-table-cell">Sorcha.OLoughlin@bedford.gov.uk</td></tr><tr class="rich-table-row"><td id="recordform:j_id7809:j_id7811:5:j_id7812" class="rich-table-cell">Updated</td><td id="recordform:j_id7809:j_id7811:5:j_id7815" class="rich-table-cell">27/02/2023 12:53:42</td><td id="recordform:j_id7809:j_id7811:5:j_id7818" class="rich-table-cell">Gillian.Freame@bedford.gov.uk</td></tr><tr class="rich-table-row"><td id="recordform:j_id7809:j_id7811:6:j_id7812" class="rich-table-cell">Updated</td><td id="recordform:j_id7809:j_id7811:6:j_id7815" class="rich-table-cell">14/03/2023 07:56:51</td><td id="recordform:j_id7809:j_id7811:6:j_id7818" class="rich-table-cell">Gillian.Freame@bedford.gov.uk</td></tr></tbody></table></div><div class="tab" id="tab-system" style="display: none;"><div id="recordform:j_id7809:j_id7834">No system revisions.</div></div></div>
+											</div>
+										</div>
+									</template>
+								</li>
 							</ul>
 							
 							<ul class="flex flex-wrap items-center justify-between gap-1">
@@ -112,7 +142,17 @@ import Button from '../components/Button.astro';
 		<div class="inline w-full"><input id="recordform:title_0" type="text" name="recordform:title_0" value="Information for new or existing Personal Assistants" class="string">
 			<div class="message"></div>
 		</div></div></div>
-					</fieldset>
+				</fieldset>
+
+				<div x-data="{ open: false }">
+					<h1 type="button" class="bg-cobalt text-white px-3 py-2 flex justify-between" aria-controls="sub-menu-1" @click="open = !open" aria-expanded="true" x-bind:aria-expanded="open.toString()" x-state:on="Current" x-state:off="Default" x-state-description="Current: &quot;bg-gray-50&quot;, Default: &quot;hover:bg-gray-50&quot;">
+						Core Details
+						<svg class="h-5 w-5 shrink-0 rotate-90 text-white" x-state:on="Expanded" x-state:off="Collapsed" :class="{ 'rotate-90 text-gray-500': open, 'text-gray-400': !(open) }" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+							<path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"></path>
+						</svg>
+					</h1>
+
+					<div x-show="open" id="recordform:layout_node_71841" class="p-3"><div id="recordform:_formRow_contact_email" class="formRow flex"><a id="contact_email" class="formanchor" name="contact_email">&nbsp;</a><label class="font-semibold">Email&nbsp;</label> <div class="inputWrapper"><input id="recordform:contact_email_0" type="text" name="recordform:contact_email_0" value="" class="string"> <div class="message"></div></div></div></div>
 				</div>
 
 			</div>
