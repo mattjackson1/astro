@@ -10,7 +10,7 @@ import Button from '../components/Button.astro';
 </div>
 
 <ul class="modeTabs">
-    <li class="hidden"><a href="#" id="recordform:j_id177" name="recordform:j_id177" onclick="A4J.AJAX.Submit('recordform',event,{'similarityGroupingId':'recordform:j_id177','oncomplete':function(request,event,data){attachEventHandlers()},'parameters':{'recordform:j_id177':'recordform:j_id177'} } );return false;">Showing record</a></li>
+    <li class="hidden"><a href="#" id="recordform:j_id177">Showing record</a></li>
     <li x-data="{ modalOpen: false }">
         <button @click="modalOpen = ! modalOpen" @click.outside="modalOpen = false" class="bg-white hover:bg-gray-100 border border-gray-300 hover:border-gray-400 text-gray-900  inline-flex items-center gap-x-1 rounded-md px-3 py-2 text-sm whitespace-nowrap font-medium shadow-sm focus:ring-1 ring-inset ring-gray-300 hover:ring-gray-400 ease-in duration-200 disabled:opacity-50 disabled:cursor-not-allowed">Show history</button>
         <template x-teleport="body">
