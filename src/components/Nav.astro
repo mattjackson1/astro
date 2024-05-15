@@ -1,9 +1,9 @@
 <div class="hidden xl:flex flex-col w-72 flex-shrink-0 border-r border-gray-200 bg-white">
     <div class="flex-1 overflow-y-auto px-4 space-y-2 pt-2 pb-8 mb-8">
         <nav class="flex flex-1 flex-col">
-            <ul role="list" class="flex flex-1 flex-col">
+            <ul class="flex flex-1 flex-col">
                 <li>
-                    <ul role="list" class="-mx-2 space-y-1">
+                    <ul class="-mx-2 space-y-1">
                         <li>
                             <div x-data="{ open: true }">
                                 <button type="button" class="flex items-center w-full hover:bg-gray-100 text-left rounded-md p-2 gap-x-3 text-sm leading-6 font-medium text-gray-900" aria-controls="sub-menu-1" @click="open = !open" aria-expanded="true" x-bind:aria-expanded="open.toString()" x-state:on="Current" x-state:off="Default" x-state-description="Current: &quot;bg-gray-50&quot;, Default: &quot;hover:bg-gray-50&quot;">
@@ -39,7 +39,7 @@
                     </ul>
                 </li>
                 <li>
-                    <ul role="list" class="-mx-2 space-y-1">
+                    <ul class="-mx-2 space-y-1">
                         <li>
                             <div x-data="{ open: false }">
                                 <button type="button" class="flex items-center w-full hover:bg-gray-100 text-left rounded-md p-2 gap-x-3 text-sm leading-6 font-medium text-gray-900" aria-controls="sub-menu-1" @click="open = !open" aria-expanded="true" x-bind:aria-expanded="open.toString()" x-state:on="Current" x-state:off="Default" x-state-description="Current: &quot;bg-gray-50&quot;, Default: &quot;hover:bg-gray-50&quot;">
