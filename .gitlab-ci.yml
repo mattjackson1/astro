@@ -1,14 +1,26 @@
-image: node:lts
+# The Docker image that will be used to build your app
+image: node:latest
 
 before_script:
   - npm install
 
+# Cache modules in between jobs
+cache:
+  key: $CI_COMMIT_REF_SLUG
+  paths:
+    - node_modules/
+
+# Deploy 'public' folder to GitLab Pages
 pages:
+  stage: deploy
   script:
     - npm run build
   artifacts:
     paths:
       - public
+  only:
+    - main
 
-only:
-  - master
+  tags:
+    - docker
+    - linux
