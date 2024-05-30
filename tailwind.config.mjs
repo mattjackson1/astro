@@ -3,18 +3,27 @@ export default {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
 		extend: {
-		colors: {
-			'cobalt': {
-			  DEFAULT: '#0A1F8F',
-			  900: '#081972'
-			}
-		  },
+			colors: {
+				'cobalt': {
+				DEFAULT: '#0A1F8F',
+				900: '#081972'
+				}
+			},
 		},
 	},
 	plugins: [
 		require('@tailwindcss/forms'),
 		function ({ addComponents }) {
 			addComponents({
+				'html': {
+					color: '#282828'
+				},
+				'label': {
+					fontWeight: '500'
+				},
+				'input::placeholder': {
+					color: '#676767'
+				},
 				'input, select': {
 					transitionDuration: '200ms',
 					'&:not(:disabled):hover': {

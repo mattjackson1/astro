@@ -5,7 +5,7 @@ import searchIcon from '../assets/search-icon.svg?raw'; //import as a string
 
 <div id="searchFilterForm" class="flex justify-between" >
     <div id="searchWizard" class="flex flex-col gap-3 mr-4">
-        <div class="flex items-center gap-3">
+        <div class="flex flex-wrap items-center gap-3">
             <select name="searchFilterForm:j_id39" class="enabled:hover:border-gray-400 disabled:opacity-75" size="1">
                 <option value="org.jboss.seam.ui.NoSelectionConverter.noSelectionValue" selected="selected">Search all...</option>
                 <option value="field:resource_type">Page type</option>
@@ -58,7 +58,7 @@ import searchIcon from '../assets/search-icon.svg?raw'; //import as a string
                                 <span class="sr-only">Close panel</span>
                             </button>
                         </div>
-                        <label for="x" class="text-gray-700 mb-4">Enter record external id:</label>
+                        <label for="x" class="block text-gray-700 mb-1">Enter record external id:</label>
                         <input type="text" name="x" />
                     </div>
                 </div>

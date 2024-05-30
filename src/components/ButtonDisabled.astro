@@ -6,6 +6,6 @@ interface Props {
 const { className = '' } = Astro.props as Props;
 ---
 
-<button x-bind:disabled="!allSelected" class={`${className} inline-flex items-center gap-x-1 rounded-md px-3 py-2 text-sm whitespace-nowrap font-medium shadow-sm focus:ring-1 ring-inset ring-gray-300 hover:ring-gray-400 ease-in duration-200 disabled:opacity-50 disabled:cursor-not-allowed`}>
+<button x-bind:disabled="!allSelected" class={`${className} bg-white hover:bg-gray-100 border border-gray-300 hover:border-gray-400 text-gray-900 inline-flex items-center gap-x-1 rounded-md px-3 py-2 text-sm whitespace-nowrap font-medium shadow-sm focus:ring-1 ring-inset ring-gray-300 hover:ring-gray-400 ease-in duration-200 disabled:opacity-50 disabled:cursor-not-allowed`}>
     <slot />
 </button>
