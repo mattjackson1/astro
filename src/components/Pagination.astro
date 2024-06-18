@@ -3,7 +3,7 @@ import Button from '../components/Button.astro';
 import ButtonDisabled from '../components/ButtonDisabled.astro';
 ---
 
-<div class="flex flex-wrap justify-between items-center" x-data="{ isEnabled: false }">
+<div class="flex flex-wrap" x-data="{ isEnabled: false }">
     <div class="flex gap-1 p-2">
         <button @click="allSelected = !allSelected" class="bg-white hover:bg-gray-100 border border-gray-300 hover:border-gray-400 text-gray-900 inline-flex items-center gap-x-1 rounded-md px-3 py-2 text-sm whitespace-nowrap font-medium shadow-sm focus:ring-1 ring-inset ring-gray-300 hover:ring-gray-400 ease-in duration-200 disabled:opacity-50 disabled:cursor-not-allowed mr-5">
             Select all
@@ -28,7 +28,7 @@ import ButtonDisabled from '../components/ButtonDisabled.astro';
             Export to CSV
         </Button>
     </div>
-    <ol class="flex gap-1 p-2">
+    <ol class="flex gap-1 p-2 ml-auto">
         <li class="inline-flex items-center gap-x-1 px-3 py-2 text-sm font-medium">1</li>
         <li class="bg-white hover:bg-gray-100 border border-gray-300 hover:border-gray-400 text-gray-900  inline-flex items-center gap-x-1 rounded-md px-3 py-2 text-sm whitespace-nowrap font-medium shadow-sm focus:ring-1 ring-inset ring-gray-300 hover:ring-gray-400 ease-in duration-200 disabled:opacity-50 disabled:cursor-not-allowed">2</li>
         <li class="bg-white hover:bg-gray-100 border border-gray-300 hover:border-gray-400 text-gray-900  inline-flex items-center gap-x-1 rounded-md px-3 py-2 text-sm whitespace-nowrap font-medium shadow-sm focus:ring-1 ring-inset ring-gray-300 hover:ring-gray-400 ease-in duration-200 disabled:opacity-50 disabled:cursor-not-allowed">3</li>
